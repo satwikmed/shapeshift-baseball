@@ -1,0 +1,95 @@
+{
+  "created_at_utc": "2026-07-19T17:40:12.683115+00:00",
+  "status": "locked_evaluation",
+  "data": {
+    "development_rows": 2134609,
+    "validation_rows": 709052,
+    "evaluation_rows": 708725,
+    "training_rows_used": 1200000
+  },
+  "threshold": {
+    "metric": "max_abs_robust_z",
+    "frozen_on": "validation_2024",
+    "quantile": 0.9,
+    "value": 2.945717192260548
+  },
+  "detection": {
+    "validation_events": 221,
+    "evaluation_events": 225,
+    "candidate_windows": 18067
+  },
+  "effect": {
+    "n_treated": 69,
+    "n_matched": 381,
+    "ate_per_100": 0.017139155923961258,
+    "ate_ci_low": -0.00042351046185644105,
+    "ate_ci_high": 0.035927267039831824,
+    "treated_delta": -0.002947085840864358,
+    "control_delta": -0.020086241764825617,
+    "pretrend_gap": 0.012132400351455394,
+    "positive_share": 0.5669291338582677
+  },
+  "diagnostics": {
+    "pretrend_gap": 0.012132400351455394,
+    "positive_share": 0.5669291338582677,
+    "overlap_note": "Matched within pitch family using standardized pre-period shape and value."
+  },
+  "case": {
+    "pitcher_id": 662253,
+    "player_name": "Mu\u00f1oz, Andr\u00e9s",
+    "pitch_family": "slider",
+    "p_throws": "R",
+    "change_date": "2025-08-09",
+    "primary_change_feature": "arm_side_break",
+    "max_abs_robust_z": 3.1087618562105126,
+    "pre_value_per_100": 0.28507843561143026,
+    "post_value_per_100": 0.03174679347291723,
+    "delta_value_per_100": -0.253331642138513,
+    "matched_delta_value_per_100": -0.2936861482697234,
+    "delta_release_speed": -1.694294792098333,
+    "delta_arm_side_break": -2.335499378367178,
+    "delta_induced_vertical_break": 0.345470368835475,
+    "pre_csw": 0.3508771929824561,
+    "post_csw": 0.4251968503937008,
+    "pre_in_zone": 0.4473684210526316,
+    "post_in_zone": 0.48031496062992124,
+    "n_matches": 10,
+    "decision": "De-emphasize",
+    "rejected": "Reshape, Keep",
+    "confidence": "Moderate"
+  },
+  "model_path": "artifacts/models/shape_value.joblib",
+  "headline": {
+    "aggregate": "Near-null average effect of detected 2025 pitch-shape interventions after matching.",
+    "implication": "Default to Keep. Reshape only under high overlap. Actively de-emphasize harmful shape patterns."
+  },
+  "options": {
+    "keep": {
+      "label": "Keep",
+      "value": "+0.02",
+      "interval": "-0.00 to +0.04",
+      "durability": "57%",
+      "confidence": "Moderate",
+      "action": "Do not allocate development bandwidth to speculative shape changes by default.",
+      "summary": "Locked 2025 average effect is near null after matching. Keep is the correct default."
+    },
+    "reshape": {
+      "label": "Reshape",
+      "value": "+0.12",
+      "interval": "+0.05 to +0.18",
+      "durability": "55%",
+      "confidence": "Low",
+      "action": "Only for high-overlap movement analogs with durable physical support.",
+      "summary": "Some individual movement interventions look positive, but they do not clear a blanket recommendation."
+    },
+    "deemphasize": {
+      "label": "De-emphasize",
+      "value": "-0.29",
+      "interval": "-0.37 to -0.24",
+      "durability": "60%",
+      "confidence": "Moderate",
+      "action": "Do not pursue arm side break changes like the Mu\u00f1oz, Andr\u00e9s slider pattern.",
+      "summary": "This locked case shows a matched decline versus controls after a material shape shift."
+    }
+  }
+}

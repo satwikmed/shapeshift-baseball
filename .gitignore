@@ -1,0 +1,27 @@
+.DS_Store
+.env
+.python-version
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+build/
+*.egg-info/
+
+# Reproducible locally, too large or restricted to commit
+data/raw/
+data/interim/
+data/processed/
+artifacts/models/
+artifacts/figures/
+*.duckdb
+*.duckdb.wal
+
+# Keep directory structure
+!data/**/.gitkeep
+!artifacts/**/.gitkeep

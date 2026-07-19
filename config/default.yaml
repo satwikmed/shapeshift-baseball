@@ -1,0 +1,40 @@
+project:
+  name: shapeshift
+  random_seed: 42
+
+paths:
+  raw: data/raw
+  interim: data/interim
+  processed: data/processed
+  database: data/shapeshift.duckdb
+  artifacts: artifacts
+
+data:
+  source: baseball_savant
+  chunk_days: 7
+  # Hawkeye-era modeling core. Pre-2021 retained only for optional sensitivity.
+  start_date: "2021-03-20"
+  historical_archive_start: "2018-03-20"
+  development_end: "2023-11-30"
+  validation_start: "2024-03-20"
+  validation_end: "2024-11-30"
+  evaluation_start: "2025-03-20"
+  evaluation_end: "2025-11-30"
+  # 2026 ABS changes plate/zone definitions; exclude location from Stuff models.
+  prospective_start: "2026-03-20"
+  regular_season_only: true
+
+interventions:
+  pre_days: 60
+  transition_days: 7
+  post_days: 60
+  min_pitches_each_side: 100
+  min_games_each_side: 3
+  persistence_share: 0.70
+  rolling_window_pitches: 50
+
+model:
+  outcome_sign: pitcher_positive
+  min_pitcher_pitch_count: 100
+  calibration_bins: 15
+  include_arm_angle: true

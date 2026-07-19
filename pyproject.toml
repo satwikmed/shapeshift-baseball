@@ -1,0 +1,60 @@
+[project]
+name = "shapeshift"
+version = "0.1.0"
+description = "Decision-grade analysis of MLB pitch-shape interventions"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "duckdb>=1.2",
+    "joblib>=1.4",
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "pyarrow>=18",
+    "pybaseball>=2.2.7",
+    "pydantic>=2.10",
+    "pyyaml>=6.0",
+    "rich>=13.9",
+    "scikit-learn>=1.6",
+    "scipy>=1.14",
+    "typer>=0.15",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.14",
+    "pandas-stubs>=2.2",
+    "pytest>=8.3",
+    "pytest-cov>=6.0",
+    "ruff>=0.9",
+    "types-pyyaml>=6.0",
+]
+
+[project.scripts]
+shapeshift = "shapeshift.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/shapeshift"]
+
+[tool.pytest.ini_options]
+addopts = "-q --cov=shapeshift --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["shapeshift"]
+
+[[tool.mypy.overrides]]
+module = ["joblib", "pybaseball", "sklearn.*"]
+ignore_missing_imports = true
