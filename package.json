@@ -1,0 +1,9 @@
+{
+  "name": "shapeshift-baseball",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "vercel-build": "npm --prefix web install && npm --prefix web run build"
+  }
+}
