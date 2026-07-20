@@ -439,6 +439,13 @@ export default function Home() {
               <p>Data scientist · MS Business Analytics · sports analytics builder</p>
             </div>
             <div className="author-links">
+              <a
+                href="https://github.com/satwikmed/shapeshift-baseball"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub <ArrowIcon />
+              </a>
               <a href="https://satwikmedipalli.dev" target="_blank" rel="noreferrer">
                 Portfolio <ArrowIcon />
               </a>
